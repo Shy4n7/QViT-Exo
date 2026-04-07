@@ -1,0 +1,20 @@
+[project]
+name = "exoplanet-transit-vetting"
+version = "0.1.0"
+description = "Quantum-Enhanced Vision Transformer for Exoplanet Transit Vetting"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=src --cov-report=term-missing"
+markers = [
+    "slow: marks tests that require network access or large downloads"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]

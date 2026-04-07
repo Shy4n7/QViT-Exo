@@ -1,0 +1,19 @@
+============================================================
+  PHASE 5 — INTERPRETABILITY STATISTICS
+============================================================
+
+  Ingress/Egress Correlation (confirmed planets)
+  ----------------------------------------
+  Planets analysed     : 20
+  Significant (p<0.05) : 0/20
+  Mean Spearman ρ      : 0.0000 ± 0.0000
+  Mean permutation-p   : 1.0000
+
+  Quantum vs Classical Attention (Mann-Whitney U)
+  ----------------------------------------
+  Samples analysed     : 40
+  Sig. different       : 40/40 (p<0.05)
+  Quantum entropy      : 4.2371 ± 0.2102
+  Classical entropy    : 5.2711 ± 0.0040
+  Interpretation       : quantum attention is MORE FOCUSED than classical
+============================================================

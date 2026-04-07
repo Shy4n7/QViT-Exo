@@ -1,0 +1,42 @@
+# Phase 3 — Quantum ViT training configuration
+# Both quantum_mode variants use this base config.
+# Override quantum_mode on CLI: --quantum-mode vqc_head | qonn_attn
+
+model: "quantum_vit"
+quantum_mode: "vqc_head"     # primary variant (Unlu 2024 approach)
+n_qubits: 4                  # NISQ-compatible; 16-dim Hilbert space
+n_quantum_layers: 2          # shallow to reduce barren plateau risk
+
+batch_size: 8                # smaller than ViT — quantum simulation is slow
+lr: 5.0e-5                   # lower LR: quantum gradients are noisier
+max_epochs: 20
+patience: 5
+min_delta: 0.001
+weight_decay: 0.01
+wandb_project: "exoplanet-transit-vetting"
+checkpoint_dir: "models/quantum_vit/"
+seed: 42
+
+# Architecture
+pretrained: true
+freeze_backbone: true        # train quantum head only first; unfreeze if needed
+regression_head: true
+regression_loss_weight: 0.1
+aux_dim: 5
+
+# Input
+image_size: 224
+
+# Class imbalance
+use_class_weights: true
+
+# Cross-validation
+kfold: 5
+
+# Barren plateau monitoring
+# Logs gradient variance for quantum params each epoch.
+# Triggers a warning when variance < barren_plateau_threshold.
+barren_plateau_threshold: 1.0e-6
+
+# Stop condition
+min_recall_threshold: 0.85

@@ -1,0 +1,25 @@
+# Phase 4 — Uncertainty Quantification configuration
+
+# Conformal prediction
+alpha: 0.10            # target error rate → 90% coverage guarantee
+n_shots: 20            # quantum measurement shots per sample
+lambda_: 1.0           # AQCP variance adaptation weight (tune on cal set)
+
+# Calibration split (fraction of val set used as calibration)
+cal_fraction: 0.50     # 50% of val set → calibration, 50% → test
+
+# Coverage sweep (for calibration curve figure)
+alpha_min: 0.05
+alpha_max: 0.50
+alpha_step: 0.05
+
+# ECE bins (classical softmax comparison)
+ece_n_bins: 10
+
+# Output
+checkpoint_dir: "models/vit/"           # classical model checkpoint
+quantum_checkpoint_dir: "models/quantum_vit/"  # quantum model checkpoint
+figures_dir: "figures/"
+results_dir: "results/uq/"
+
+seed: 42

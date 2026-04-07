@@ -1,0 +1,40 @@
+catalog_url: "https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
+catalog_table: "cumulative"
+catalog_columns:
+  - kepid
+  - kepoi_name
+  - kepler_name
+  - koi_disposition
+  - koi_period
+  - koi_time0bk
+  - koi_depth
+  - koi_impact
+  - koi_duration
+  - koi_ror
+  - koi_steff
+  - koi_slogg
+  - koi_srad
+  - ra
+  - dec
+
+cache_dir: "data/raw"
+output_dir: "data/processed"
+splits_dir: "data/splits"
+
+# Preprocessing
+sg_window_length: 301
+sg_polyorder: 3
+sigma_clip_threshold: 5.0
+phase_bins: 2001
+image_size: 64
+
+# Splits
+test_size: 0.15
+val_size: 0.15
+random_seed: 42
+
+# Download
+download_workers: 4
+download_timeout: 60
+download_retries: 3
+batch_size_download: 50

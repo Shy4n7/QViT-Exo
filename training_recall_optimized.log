@@ -1,0 +1,23 @@
+01:02:46  INFO      Config loaded from C:\Users\shyan\Desktop\Projects\Papers\Exoplanet Detection � Quantum ML + Vision Transformer + NASA Data\configs\vit_config.yaml
+01:02:46  INFO      Device: cuda
+01:02:47  INFO      Train samples: 4440  |  Val samples: 957
+01:02:48  INFO      Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
+01:02:50  INFO      [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+01:02:50  INFO      Converted input conv patch_embed.proj pretrained weights from 3 to 2 channel(s)
+01:07:48  INFO      Epoch 1/30 | train_loss=0.7497 | val_loss=0.6900 | val_acc=0.5099 | val_recall=0.9392
+01:07:48  INFO      Checkpoint saved to models\vit\best_model.pt (epoch=1, val_loss=0.6900)
+01:11:14  INFO      Epoch 2/30 | train_loss=0.6786 | val_loss=0.6836 | val_acc=0.5308 | val_recall=0.9197
+01:14:41  INFO      Epoch 3/30 | train_loss=0.6622 | val_loss=0.6725 | val_acc=0.6353 | val_recall=0.4623
+01:14:41  WARNING   Epoch 3: planet_recall=0.4623 below threshold 0.50.
+01:18:07  INFO      Epoch 4/30 | train_loss=0.6392 | val_loss=0.6376 | val_acc=0.6228 | val_recall=0.6350
+01:21:37  INFO      Epoch 5/30 | train_loss=0.6284 | val_loss=0.6567 | val_acc=0.5841 | val_recall=0.8881
+01:25:03  INFO      Epoch 6/30 | train_loss=0.6058 | val_loss=0.6194 | val_acc=0.6479 | val_recall=0.6472
+01:25:03  INFO      Early stopping at epoch 6 (patience=5).
+01:25:17  INFO      ====================================================
+01:25:17  INFO        SINGLE SPLIT RESULTS
+01:25:17  INFO        Planet recall : 0.6472
+01:25:17  INFO        Accuracy      : 0.6479
+01:25:17  INFO        Val loss      : 0.6194
+01:25:17  INFO      ====================================================
+01:25:17  INFO      Training complete � epochs trained: 6  best planet recall: 0.9392
+

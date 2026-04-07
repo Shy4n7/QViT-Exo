@@ -1,0 +1,4 @@
+metric,classical_vit,quantum_vit,improvement
+PR AUC,0.6044,0.5950,-0.0093
+Best F1,0.6557,0.6573,0.0016
+ECE,0.0313,0.0490,-0.0177

@@ -1,0 +1,30 @@
+model: "vit_base_patch16_224"
+batch_size: 16          # smaller than CNN — ViT-B/16 is ~86M params
+lr: 1.0e-4              # lower LR for fine-tuning pretrained backbone
+max_epochs: 30
+patience: 5
+min_delta: 0.001
+weight_decay: 0.01
+wandb_project: "exoplanet-transit-vetting"
+checkpoint_dir: "models/vit/"
+seed: 42
+
+# ViT architecture
+pretrained: true
+freeze_backbone: false  # fine-tune all layers (unfreeze after warm-up via script)
+regression_head: true
+regression_loss_weight: 0.1
+aux_dim: 5
+
+# Input
+image_size: 224         # ViT-B/16 native input — images are upsampled from 64×64
+
+# Class imbalance (Kepler DR25: ~60% planet, ~40% FP — mild but worth weighting)
+use_class_weights: true
+use_weighted_sampler: false
+
+# Cross-validation
+kfold: 5
+
+# Optimisation callbacks
+min_recall_threshold: 0.85

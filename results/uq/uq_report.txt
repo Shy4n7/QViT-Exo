@@ -1,0 +1,21 @@
+==========================================================
+  UNCERTAINTY QUANTIFICATION REPORT — Phase 4
+==========================================================
+  Target error rate α     : 0.10
+  Nominal coverage (1−α)  : 90.00%
+  Empirical coverage      : 91.02%  ✓ VALID
+  Calibrated quantile q̂  : 0.7107
+  Calibration set size    : 478
+----------------------------------------------------------
+  Abstention statistics
+  Abstention rate         : 60.3%
+  Confident predictions   : 190
+  Uncertain (flagged)     : 289
+  Full FPR (no abstain)   : 64.1%
+  Confident FPR (abstain) : 20.5%
+  FPR reduction           : 68.0%
+----------------------------------------------------------
+  Calibration quality
+  Classical softmax ECE   : 0.0176  (lower = better calibrated)
+  AQCP coverage gap       : 0.0102
+==========================================================

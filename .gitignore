@@ -1,0 +1,15 @@
+data/raw/
+data/processed/
+data/*.log
+/models/
+training.log
+wandb/
+__pycache__/
+*.egg-info/
+*.pyc
+.env
+.DS_Store
+.pytest_cache/
+.coverage
+htmlcov/
+*.ipynb_checkpoints/

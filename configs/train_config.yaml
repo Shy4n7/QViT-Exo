@@ -1,0 +1,20 @@
+model: "baseline_cnn"
+batch_size: 64
+lr: 0.001
+epochs: 50
+early_stop_patience: 5
+weight_decay: 0.0001
+wandb_project: "exoplanet-transit-vetting"
+checkpoint_dir: "models/"
+seed: 42
+
+# Baseline CNN specific
+dropout: 0.5
+use_local_view: false   # Set true to add local-view branch if recall < 85%
+
+# Class imbalance
+use_class_weights: true
+use_weighted_sampler: false
+
+# Stop condition
+min_recall_threshold: 0.85
