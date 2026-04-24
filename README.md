@@ -1,6 +1,6 @@
 # QViT-Exo: Uncertainty-Aware Exoplanet Transit Classification with Quantum Attention and Conformal Prediction
 
-[![arXiv](https://img.shields.io/badge/arXiv-preprint%20pending-b31b1b.svg)](https://arxiv.org)
+[![Zenodo](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.19666090-blue.svg)](https://zenodo.org/records/19666090)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue)](https://python.org)
 [![Tests](https://img.shields.io/badge/Tests-217%2F218-brightgreen)](tests/)
@@ -207,6 +207,36 @@ python scripts/run_interpretability.py \
 
 ---
 
+## Results
+
+### Precision-Recall Trade-off
+
+![PR Curve](results/01_pr_curve.png)
+
+### Threshold Tuning: Recall / Precision / F1
+
+![Threshold Tuning](results/02_threshold_tuning.png)
+
+### Calibration Curve (ECE = 0.0313)
+
+![Calibration Curve](results/03_calibration_curve.png)
+
+### Abstention Analysis
+
+![Abstention Analysis](results/04_abstention_analysis.png)
+
+### Classical vs Quantum Comparison
+
+**PR Curve — Classical ViT (AUC-PR=0.6044) vs Quantum ViT (AUC-PR=0.5950)**
+
+![PR Comparison](results/comparison/01_pr_curve_comparison.png)
+
+**Calibration — Classical ViT (ECE=0.0313) vs Quantum ViT (ECE=0.0490)**
+
+![Calibration Comparison](results/comparison/02_calibration_comparison.png)
+
+---
+
 ## Reproducing Paper Results
 
 All results in the paper are produced by the scripts above on the Kepler DR25 KOI catalog (7,585 samples, 70/15/15 train/val/test split, stratified). The data download is fully automated via `lightkurve` and the NASA Exoplanet Archive TAP service.
@@ -236,17 +266,20 @@ All 218 unit and integration tests pass (test coverage: 81%).
 ## Citation
 
 ```bibtex
-@article{paul2026qvit_exo,
-  title   = {Uncertainty-Aware Exoplanet Transit Classification with Quantum
-             Attention and Conformal Prediction},
-  author  = {Paul, Shyan},
-  journal = {arXiv preprint},
-  year    = {2026},
-  note    = {Preprint pending arXiv submission}
+@misc{paul2026qvit_exo,
+  title     = {QViT-Exo: Uncertainty-Aware Exoplanet Transit Classification with
+               Quantum Attention and Conformal Prediction},
+  author    = {Paul, Shyan},
+  year      = {2026},
+  month     = apr,
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.19666090},
+  url       = {https://zenodo.org/records/19666090},
+  note      = {Preprint. CC BY 4.0}
 }
 ```
 
-Preprint will be available on [arXiv](https://arxiv.org) upon acceptance.
+Preprint: [zenodo.org/records/19666090](https://zenodo.org/records/19666090) (DOI: 10.5281/zenodo.19666090)
 
 ---
 
