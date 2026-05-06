@@ -1,6 +1,6 @@
 # QViT-Exo: Uncertainty-Aware Exoplanet Transit Classification with Quantum Attention and Conformal Prediction
 
-[![Zenodo](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.19666090-blue.svg)](https://zenodo.org/records/19666090)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue)](https://python.org)
 [![Tests](https://img.shields.io/badge/Tests-217%2F218-brightgreen)](tests/)
@@ -262,24 +262,6 @@ All 218 unit and integration tests pass (test coverage: 81%).
 **Dual-task loss:** Auxiliary regression on transit parameters (period, depth, duration) prevents shortcut learning by forcing the model to reason about physical transit geometry.
 
 ---
-
-## Citation
-
-```bibtex
-@misc{paul2026qvit_exo,
-  title     = {QViT-Exo: Uncertainty-Aware Exoplanet Transit Classification with
-               Quantum Attention and Conformal Prediction},
-  author    = {Paul, Shyan},
-  year      = {2026},
-  month     = apr,
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.19666090},
-  url       = {https://zenodo.org/records/19666090},
-  note      = {Preprint. CC BY 4.0}
-}
-```
-
-Preprint: [zenodo.org/records/19666090](https://zenodo.org/records/19666090) (DOI: 10.5281/zenodo.19666090)
 
 ---
 
