@@ -253,6 +253,7 @@ class TestViTTrainerEarlyStopping:
                 loss=next(increasing_losses),
                 accuracy=0.5,
                 planet_recall=0.9,
+                f1=0.8,
             )
 
         config = {
