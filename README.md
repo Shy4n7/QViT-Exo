@@ -3,7 +3,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue)](https://python.org)
-[![Tests](https://img.shields.io/badge/Tests-217%2F218-brightgreen)](tests/)
+[![Tests](https://img.shields.io/badge/Tests-289%2F289-brightgreen)](tests/)
 
 > **Quantum-enhanced attention provides physically interpretable transit signatures
 > and calibrated uncertainty estimates that classical black-box models
@@ -187,7 +187,7 @@ python scripts/run_interpretability.py \
 │   ├── run_interpretability.py   # Attention-to-lightcurve analysis
 │   └── run_tess_search.py        # TESS TOI screening (future work)
 │
-├── tests/                        # 218 pytest tests (99.5% pass rate)
+├── tests/                        # 289 pytest tests (100% pass rate)
 │   ├── test_catalog.py
 │   ├── test_preprocess.py
 │   ├── test_imaging.py
@@ -247,7 +247,7 @@ All results in the paper are produced by the scripts above on the Kepler DR25 KO
 - Quantum ViT training: ~3–6 hours (PennyLane classical simulation with 4-qubit circuits)
 - UQ + interpretability analysis: ~30 minutes
 
-All 218 unit and integration tests pass (test coverage: 81%).
+All 289 unit and integration tests pass (test coverage: 84%).
 
 ---
 

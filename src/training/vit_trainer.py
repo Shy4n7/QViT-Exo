@@ -145,6 +145,7 @@ class ViTTrainer:
             wandb.init(config=self._config)
             wandb.watch(self._model)
 
+        best_val_loss: float = float("inf")
         best_f1: float = 0.0
         best_planet_recall: float = 0.0
         epochs_without_improvement: int = 0
@@ -188,10 +189,14 @@ class ViTTrainer:
                     _PLANET_RECALL_THRESHOLD,
                 )
 
-            improved = val_metrics.f1 > best_f1 + min_delta
-            if improved:
+            if val_metrics.f1 > best_f1:
                 best_f1 = val_metrics.f1
+            if val_metrics.planet_recall > best_planet_recall:
                 best_planet_recall = val_metrics.planet_recall
+
+            improved = val_metrics.loss < best_val_loss - min_delta
+            if improved:
+                best_val_loss = val_metrics.loss
                 epochs_without_improvement = 0
                 self._save_checkpoint(epoch=epoch, val_loss=val_metrics.loss)
             else:
@@ -208,7 +213,12 @@ class ViTTrainer:
             import wandb  # noqa: PLC0415
             wandb.finish()
 
-        return {"epochs_trained": epochs_trained, "best_f1": best_f1, "best_planet_recall": best_planet_recall}
+        return {
+            "epochs_trained": epochs_trained,
+            "best_f1": best_f1,
+            "best_planet_recall": best_planet_recall,
+            "best_val_loss": best_val_loss,
+        }
 
     def evaluate(self, loader: DataLoader) -> EpochMetrics:
         """Run inference on *loader* and compute evaluation metrics.
