@@ -30,23 +30,6 @@ nor calibrated uncertainty. **QViT-Exo** solves both simultaneously:
 | **AQCP uncertainty** | Adaptive Quantum Conformal Prediction with shot noise simulation. Finite-sample coverage guarantee: P(y ∈ C(x)) ≥ 1−α. Reduces false-positive rate by 56% via selective abstention. |
 | **Attention analysis** | 1D attention profile extracted and compared (Quantum vs. classical, Mann-Whitney p<0.001; entropy H_Q=4.24 vs. H_C=5.27). |
 
----
-```mermaid
-graph TD
-    A[1. NASA Space Telescopes Kepler/TESS] -->|Raw Light & Star Data| B(2. Data Processing)
-    
-    B -->|Phase-Folded Curve Images| C[3. Hybrid Quantum-AI Model]
-    B -->|Key Star Measurements| C
-    
-    subgraph Core Intelligent Brain
-        C --> C1[Vision Transformer - Analyzes Images]
-        C --> C2[Quantum Attention Engine - Extracts Transit Details]
-    end
-    
-    C --> D[4. Decision: Planet vs. False Positive]
-    C --> E[5. Transit Properties e.g., Size, Orbit]
-    C --> F[6. Uncertainty & Confidence Check]
-
 ## Architecture
 
 ```mermaid
@@ -62,7 +45,6 @@ graph LR
     
     D --> G[Conformal Prediction Engine]
 ```
-
 
 ---
 
