@@ -52,7 +52,7 @@ graph TD
 ```mermaid
 graph LR
     A[NASA Space Telescopes] -->|Light Curves| B(Python Data Pipeline)
-    B --> C[(Local Cache & CSV Data)]
+    B --> C[(Local Cache and CSV Data)]
     B --> D[QViT-Exo Core Model]
     
     subgraph Core AI Architecture
