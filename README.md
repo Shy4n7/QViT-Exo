@@ -34,17 +34,57 @@ nor calibrated uncertainty. **QViT-Exo** solves both simultaneously:
 
 ```mermaid
 graph LR
-    A[NASA Space Telescopes] -->|Light Curves| B(Python Data Pipeline)
-    B --> C[(Local Cache and CSV Data)]
-    B --> D[QViT-Exo Core Model]
-    
-    subgraph Core AI Architecture
-    D --> E[Vision Transformer Backbone]
-    D --> F[Quantum Attention Block]
+    %% Stage 1: Data Sources
+    A1[Kepler Telescope\n7585 KOI Samples] -->|FITS Light Curves| B
+    A2[TESS Telescope\nTOI Candidates] -->|Multi-sector LC| B
+    A3[NASA Exoplanet Archive\nKOI DR25 Catalog] -->|Labels and Metadata| B
+
+    %% Stage 2: Preprocessing Pipeline
+    subgraph Preprocessing Pipeline
+        B(lightkurve Downloader) --> C1[SG Detrending\nand Normalisation]
+        C1 --> C2[Sigma Clipping\nand Phase Folding]
+        C2 --> C3[Recurrence Plot\n64x64 Image]
+        C2 --> C4[GADF Image\n64x64 Image]
+        C2 --> C5[Auxiliary Features\nDepth, Centroid, Eclipse]
     end
-    
-    D --> G[Conformal Prediction Engine]
+
+    %% Stage 3: Model Core
+    C3 -->|Channel 0| D
+    C4 -->|Channel 1| D
+    C5 -->|Metadata| D
+
+    subgraph QViT-Exo Model
+        D[Bilinear Upsample\n2 x 224 x 224] --> E[Frozen ViT-B/16\nBackbone]
+        E --> F[QONN Residual\nAttention Block\n4 Qubits 2 Layers]
+        C5 --> G[Auxiliary MLP\nBranch]
+        F --> H[Feature Fusion\nLayer]
+        G --> H
+    end
+
+    %% Stage 4: Outputs
+    subgraph Outputs
+        H --> I1[Classification Head\nPlanet vs False Positive]
+        H --> I2[Regression Head\nPeriod, Depth, Duration]
+        I1 --> J[Adaptive Quantum\nConformal Prediction]
+        J --> K1[Calibrated Prediction Sets\nCoverage Guarantee]
+        J --> K2[Selective Abstention\n56 percent FP Reduction]
+        F --> L[Attention Analysis\nQuantum vs Classical]
+    end
 ```
+
+### Component Overview
+
+| Stage | Component | Purpose |
+|---|---|---|
+| **Data Ingestion** | Kepler/TESS + NASA Archive | 7,585 labelled light curves via `lightkurve` |
+| **Preprocessing** | SG-Detrend → Normalise → σ-clip → Phase-fold | Cleans and aligns raw photometry |
+| **Imaging** | Recurrence Plot + GADF (64×64 each) | Converts 1D curves to 2-channel images |
+| **Backbone** | Frozen ViT-B/16 (timm) | Extracts rich spatial features from images |
+| **Quantum Layer** | QONN Residual Attention (4 qubits, 2 layers) | Stable quantum refinement with no barren plateaus |
+| **Auxiliary Branch** | MLP on depth/centroid/eclipse features | Injects physical domain knowledge |
+| **Dual-Task Head** | Classification + Regression | Predicts label and transit parameters jointly |
+| **Uncertainty** | Adaptive Quantum Conformal Prediction (AQCP) | Mathematically valid finite-sample coverage guarantee |
+| **Interpretability** | 1D Attention Profile Analysis | Quantum vs classical attention (Mann-Whitney p<0.001) |
 
 ---
 
