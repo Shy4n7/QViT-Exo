@@ -49,27 +49,20 @@ graph TD
 
 ## Architecture
 
+```mermaid
+graph LR
+    A[NASA Space Telescopes] -->|Light Curves| B(Python Data Pipeline)
+    B --> C[(Local Cache & CSV Data)]
+    B --> D[QViT-Exo Core Model]
+    
+    subgraph Core AI Architecture
+    D --> E[Vision Transformer Backbone]
+    D --> F[Quantum Attention Block]
+    end
+    
+    D --> G[Conformal Prediction Engine]
 ```
-Phase-folded light curve
-        ↓
-  Preprocessing (SG-detrend → normalise → σ-clip → phase-fold)
-        ↓
-  ┌─────────────────────────────────┐
-  │  Ch 0: Recurrence Plot (64×64) │   ← temporal recurrence structure
-  │  Ch 1: GADF            (64×64) │   ← angular temporal correlations
-  └─────────────────────────────────┘
-        ↓  bilinear upsample → (2, 224, 224)
-  ViT-B/16 backbone (frozen)
-        ↓
-  QONN residual attention (4 qubits, 2 layers, BasicEntanglerLayers)
-        ↓
-  Fuse with auxiliary branch: [odd_depth, even_depth, depth_ratio,
-                                secondary_eclipse, centroid_shift]
-        ↓
-  Dual-task head: Planet/FP classification + transit parameter regression
-        ↓
-  Adaptive Quantum Conformal Prediction → calibrated prediction sets
-```
+
 
 ---
 
